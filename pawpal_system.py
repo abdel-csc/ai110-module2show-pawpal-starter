@@ -1,6 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
-from datetime import date
+from datetime import date, timedelta
 from typing import List, Optional, Literal
 
 Frequency = Literal["once", "daily", "weekly"]
@@ -14,8 +14,15 @@ class Task:
     is_complete: bool = False
     due_date: Optional[date] = None
 
-    def mark_complete(self) -> None:
+    def mark_complete(self) -> Optional[Task]:
         self.is_complete = True
+        if self.frequency == "daily":
+            next_due = date.today() + timedelta(days=1)
+            return Task(self.description, self.time, self.frequency, False, next_due)
+        if self.frequency == "weekly":
+            next_due = date.today() + timedelta(days=7)
+            return Task(self.description, self.time, self.frequency, False, next_due)
+        return None
 
 
 @dataclass

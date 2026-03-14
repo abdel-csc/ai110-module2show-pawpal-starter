@@ -42,6 +42,19 @@ def main():
         for c in conflicts:
             print(c)
 
+    # Test marking a daily task complete and rescheduling
+    evening_walk = Task("Evening walk", "20:00", "daily")
+    new_task = evening_walk.mark_complete()
+
+    # Safely access possible attribute names for completion and due date
+    original_status = evening_walk.is_complete
+    due_date = getattr(new_task, "due_date", None)
+
+    print(
+        f"\nMarked original task '{evening_walk.description}' is_complete: {evening_walk.is_complete}")
+
+    print(f"Rescheduled task due_date: {due_date}")
+
 
 if __name__ == "__main__":
     main()
