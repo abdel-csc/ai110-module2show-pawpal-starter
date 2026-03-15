@@ -41,3 +41,28 @@ pip install -r requirements.txt
 5. Add tests to verify key behaviors.
 6. Connect your logic to the Streamlit UI in `app.py`.
 7. Refine UML so it matches what you actually built.
+
+## Some Features implemented:
+
+##  Smarter Scheduling
+
+- **Sorting by Time** – Tasks are automatically sorted chronologically using Python's `sorted()` with a lambda.
+- **Conflict Detection** – Warns you if two tasks are scheduled at the same time.
+- **Recurring Tasks** – Daily and weekly tasks auto-reschedule when marked complete using `timedelta`.
+
+## 🧪 Testing PawPal+
+
+You are able t run tests with:
+```bash
+python -m pytest and  streamlit run app
+```
+
+Our tests cover a plethora of factors. Such as:
+- Task completion status
+- Adding tasks to pets
+- Sorting correctness
+- Recurring task rescheduling
+- Empty pet has no tasks
+- Conflict detection
+
+
